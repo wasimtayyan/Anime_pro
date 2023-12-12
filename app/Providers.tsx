@@ -8,7 +8,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 500);
 
     return () => clearTimeout(loadingTimer);
   }, []);

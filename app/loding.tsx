@@ -5,7 +5,7 @@ const Loading = () => {
   const Cards = ["1", "2", "3", "4"];
   return (
     <main className="h-screen bg-[#0F1117]">
-      <section className="min-h-[50vh] flex justify-center">
+      <section className="min-h-[75vh] flex justify-center">
         <div className="sm:p-16 py-16 px-8 flex justify-start lg:items-center max-lg:flex-col w-full sm:gap-16 gap-0">
           <div className=" w-3/5 flex items-center gap-3">
             <div className="w-full flex flex-col gap-2">

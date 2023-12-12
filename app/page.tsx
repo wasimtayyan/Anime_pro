@@ -11,7 +11,7 @@ async function Home() {
         {data}
       </section>
 
-      <LoadMore />
+      <LoadMore kind="Anime" />
     </main>
   );
 }

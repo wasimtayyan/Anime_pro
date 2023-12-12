@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 
 import "./globals.css";
 import Providers from "./Providers";
+import Header from "@/components/Header";
 
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
@@ -23,10 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={dmSans.className}>
-        <main className="max-w-7xl mx-auto bg-[#0F1117]">
+        <main className="w-full ">
           <Providers>
-            <Hero />
-            {children}
+            <Header />
+            <section className="max-w-7xl mx-auto bg-[#0F1117]">
+              <Hero />
+              {children}
+            </section>
             <Footer />
           </Providers>
         </main>

@@ -2,23 +2,25 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
-import { fetchAnime } from "@/app/actions";
-import AnimeCard, { AnimeProp } from "./AnimeCard";
+import { fetchAnime, fetchManga } from "@/app/actions";
 let page = 2;
-function LoadMore() {
+type LoadProps = {
+  kind: "Anime" | "Manga";
+};
+function LoadMore({ kind }: LoadProps) {
   const { ref, inView } = useInView();
   const [data, setData] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
     if (inView) {
       setTimeout(() => {
-        fetchAnime(page).then((res) => {
+        (kind == "Anime" ? fetchAnime(page) : fetchManga(page)).then((res) => {
           setData([...data, ...res]);
         });
         page++;
       }, 1000);
     }
-  }, [inView, data]);
+  }, [inView, data, kind]);
   return (
     <>
       <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
