@@ -2,6 +2,7 @@
 import { NextUIProvider } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import Loading from "./loding";
+import ScrollToTop from "@/components/ScrollToTop";
 const Providers = ({ children }: { children: React.ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -12,7 +13,12 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
 
     return () => clearTimeout(loadingTimer);
   }, []);
-  return isLoading ? <Loading /> : <NextUIProvider>{children}</NextUIProvider>;
+  return (
+    <>
+      {isLoading ? <Loading /> : <NextUIProvider>{children}</NextUIProvider>}
+      <ScrollToTop />
+    </>
+  );
 };
 
 export default Providers;

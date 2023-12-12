@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import {
   Navbar,
@@ -7,20 +7,41 @@ import {
   NavbarContent,
   NavbarItem,
   Link,
-  Button,
   DropdownTrigger,
   DropdownItem,
   DropdownMenu,
   Dropdown,
   Input,
+  NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuToggle,
 } from "@nextui-org/react";
 import Image from "next/image";
 import { SearchIcon } from "./Searchicon";
+
 export default function Header() {
-  const [value, setValue] = useState("");
+  const [search, setSearch] = useState("");
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const dillay = setTimeout(() => {
+      if (search) {
+        console.log(search);
+      } else {
+      }
+    }, 400);
+    return () => clearTimeout(dillay);
+  }, [search]);
+
+  const menuItems = [
+    { title: "Anemi", herf: "/" },
+    { title: "Manga", herf: "/manga" },
+  ];
+
   return (
     <Navbar
+      onMenuOpenChange={setIsMenuOpen}
       shouldHideOnScroll
       maxWidth="xl"
       classNames={{
@@ -43,12 +64,19 @@ export default function Header() {
       }}
       className="bg-[#0F1117] w-full text-white "
     >
-      <NavbarBrand>
-        <Image src="/logo.svg" alt="logo" height={60} width={60} />
-        <p className="font-bold text-inherit">
-          Anime <span className="red-gradient">Pro</span>{" "}
-        </p>
-      </NavbarBrand>
+      <NavbarContent className="mx-3 lg:mx-0" justify="start">
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="sm:hidden "
+        />
+        <NavbarBrand className="sm:hidden"></NavbarBrand>
+        <NavbarBrand>
+          <Image src="/logo.svg" alt="logo" height={60} width={60} />
+          <p className="font-bold text-inherit">
+            Anime <span className="red-gradient">Pro</span>{" "}
+          </p>
+        </NavbarBrand>
+      </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4 " justify="center">
         <NavbarItem isActive={pathname === "/"}>
@@ -73,13 +101,13 @@ export default function Header() {
             Manga
           </Link>
         </NavbarItem>
-        <NavbarItem>
+        {/* <NavbarItem>
           <Link href="#" className="text-white text-lg">
             Integrations
           </Link>
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
-      <NavbarContent justify="end">
+      <NavbarContent justify="end" className="hidden sm:flex">
         <Input
           classNames={{
             base: "max-w-full sm:max-w-[15rem] h-10",
@@ -92,9 +120,24 @@ export default function Header() {
           size="lg"
           startContent={<SearchIcon size={18} />}
           type="search"
-          onValueChange={setValue}
+          onValueChange={setSearch}
         />
       </NavbarContent>
+      <NavbarMenu className="bg-[#0F1117]">
+        {menuItems.map((item, index) => (
+          <NavbarMenuItem key={`${item}-${index}`}>
+            <Link
+              className={`w-full ${
+                pathname === item.herf ? "text-[#3784ef]" : "text-white"
+              }`}
+              href={item.herf}
+              size="lg"
+            >
+              {item.title}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
     </Navbar>
   );
 }
