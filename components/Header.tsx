@@ -18,21 +18,26 @@ import {
 } from "@nextui-org/react";
 import Image from "next/image";
 import { SearchIcon } from "./Searchicon";
+import useSearch from "@/app/context/SearchContext";
 
 export default function Header() {
-  const [search, setSearch] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { setSearch } = useSearch();
 
   useEffect(() => {
     const dillay = setTimeout(() => {
-      if (search) {
-        console.log(search);
+      if (searchValue) {
+        setSearch(searchValue);
+        console.log(searchValue);
       } else {
+        setSearch("");
       }
     }, 400);
     return () => clearTimeout(dillay);
-  }, [search]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchValue]);
 
   const menuItems = [
     { title: "Anemi", herf: "/" },
@@ -120,7 +125,7 @@ export default function Header() {
           size="lg"
           startContent={<SearchIcon size={18} />}
           type="search"
-          onValueChange={setSearch}
+          onValueChange={setSearchValue}
         />
       </NavbarContent>
       <NavbarMenu className="bg-[#0F1117]">

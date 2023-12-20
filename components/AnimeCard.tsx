@@ -1,6 +1,6 @@
 import Image from "next/image";
+// import { motion } from "framer-motion";
 import { MotionDiv } from "./MotionDiv";
-import Link from "next/link";
 
 export interface AnimeProp {
   id: string;
@@ -33,7 +33,7 @@ function AnimeCard({ anime, index }: Prop) {
       variants={varitans}
       initial="hidden"
       transition={{
-        delay: 0.3 * index,
+        delay: 0.3 * (index <= 10 ? index : index - 1),
         ease: "easeInOut",
         duration: 0.1,
       }}
