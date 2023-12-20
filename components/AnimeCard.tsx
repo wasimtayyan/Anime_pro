@@ -33,7 +33,7 @@ function AnimeCard({ anime, index }: Prop) {
       variants={varitans}
       initial="hidden"
       transition={{
-        delay: 0.3 * (index <= 10 ? index : index - 1),
+        delay: 0.3 * (index <= 10 ? index : index - 10),
         ease: "easeInOut",
         duration: 0.1,
       }}
