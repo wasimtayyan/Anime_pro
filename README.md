@@ -1,9 +1,15 @@
-# Build Modern Next 14 Server Side App with Server Actions, Infinite Scroll & Framer Motion Animations
+# Anime Pro
 
-![Anime Website](https://i.ibb.co/MG1nbqt/YT-Thumbnails-2.png)
+Welcome to our Next.js server-side app! This project leverages Next.js for server-side rendering, incorporates server actions for specific functionalities, features infinite scroll for content loading, employs Framer Motion for smooth animations, and includes a search functionality.
 
-### [🌟 Become a top 1% Next.js 14 developer in only one course](https://jsmastery.pro/next14)
-### [🚀 Land your dream programming job in 6 months](https://jsmastery.pro/masterclass)
-### [📙 Free Three.js Cheatsheet](https://resource.jsmastery.pro/threejs-cheatsheet)
-### [🌐 Best Hosting for Your Websites](https://hostinger.com/javascript10)
+## Features
 
+- **Server-Side Rendering:** Utilizes Next.js for efficient server-side rendering.
+- **Server Actions:** Implements server actions for [mention specific functionalities].
+- **Infinite Scroll:** Achieves dynamic content loading through infinite scroll.
+- **Framer Motion Animations:** Enhances the user experience with fluid animations.
+- **Search Functionality:** Enables users to search for [define what users can search for].
+
+
+
+![screencapture-anime-pro-eight-vercel-app-2023-12-31-14_55_04](https://github.com/wasimtayyan/Anime_pro/assets/127048388/664fe01f-a992-4362-a779-63e6be95b43d)
